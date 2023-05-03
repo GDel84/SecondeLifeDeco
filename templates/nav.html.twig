@@ -1,0 +1,35 @@
+ {% block body %}	
+<div class="fh5co-loader"></div>
+	
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-xs-2">
+					<div id="fh5co-logo"><a href="{{ path('accueil') }}"><img class="logoNav" src={{asset('../photo/Logo-blanc.png')}}></a></div>
+				</div>
+				<div class="col-md-6 col-xs-6 text-center menu-1">
+					<ul>
+						<li class="has-dropdown">
+							<a href="{{ path('article') }}">Article</a>
+						</li>
+						<li><a href="about.html">About</a></li>
+						<li class="has-dropdown">
+							<a href="services.html">Services</a>
+						</li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
+					<ul>
+
+						<li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><ion-icon name="cart-outline"></ion-icon></span></a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+	</div>
+</div>
+{% endblock %}

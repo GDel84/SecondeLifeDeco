@@ -1,0 +1,15 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+
+{% block body %}
+<div class="carte-form">
+    <h1>Modifier article</h1>
+ 
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+                <button type="submit" class="btn-form-secondary">Ajouter</button>
+            {{ form_end(form) }}
+    </div>
+
+{% endblock %} 
