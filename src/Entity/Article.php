@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -24,6 +26,14 @@ class Article
 
     #[ORM\Column(nullable: true)]
     private ?int $OrederArticle = null;
+
+    #[ORM\OneToMany(mappedBy: 'Articles', targetEntity: Panier::class)]
+    private Collection $paniers;
+
+    public function __construct()
+    {
+        $this->paniers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class Article
     public function setOrederArticle(?int $OrederArticle): self
     {
         $this->OrederArticle = $OrederArticle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panier>
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers->add($panier);
+            $panier->setArticles($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->paniers->removeElement($panier)) {
+            // set the owning side to null (unless already changed)
+            if ($panier->getArticles() === $this) {
+                $panier->setArticles(null);
+            }
+        }
 
         return $this;
     }

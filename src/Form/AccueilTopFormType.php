@@ -2,22 +2,22 @@
 
 namespace App\Form;
 
-use App\Entity\Article;
+use App\Entity\AccueilTop;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class ArticleFormType extends AbstractType
+class AccueilTopFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Name')
-            ->add('Quantity')
             ->add('picture', FileType::class, [
-                'label' => 'Picture',
+                'label' => 'Photo',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
@@ -40,14 +40,19 @@ class ArticleFormType extends AbstractType
                     ])
                 ],
             ])
-            ->add('OrederArticle')
+            ->add('Title', TextType::class,[
+            'label' => 'Titre'
+            ])
+            ->add('Text', TextareaType::class, [
+                'label' => 'Texte'
+            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Article::class,
+            'data_class' => AccueilTop::class,
         ]);
     }
 }
