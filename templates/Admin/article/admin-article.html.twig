@@ -1,35 +1,40 @@
 {% extends 'admin/adminNav.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Les Articles!{% endblock %}
 
 {% block body %}
-
+<div class="container">
+    <h1 class="h3 mb-2">Horaire d'ouverture</h1>
+    <button type="button" class="btn btn-success">
+        <a href="{{ path("admin-article-create") }}" type="button">Ajouté</a>
+    </button>
+    
     <div class="shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped-columns">        
                     <thead> 
                         <tr>
+                            <th>Nom</th>
+                            <th>Qauntiter</th>
                             <th>Photo</th>
-                            <th>Titre</th>
-                            <th>Texte</th>
                             <th>Modifier</th>
                             <th>Supprimer</th>
                         </tr> 
                     </thead>
                     <tbody>
-                    {% for accueilTop in accueilTops %}
+                    {% for article in articles %}
                         <tr>
-                            <td>{{accueilTop.Title}}</td>
-                            <td>{{accueilTop.Text}}</td>
-                            <td><img src={{asset('/uploads/picture/' ~ accueilTop.picture)}} width="200px"></td>
+                            <td>{{article.Name}}</td>
+                            <td>{{article.Quantity}}</td>
+                            <td><img src={{asset('/uploads/picture/' ~ article.picture)}} width="200px"></td>
                             <th><button type="button" class="btn btn-primary">
-                                    <a href="{{ path("admin-accueil-top-edit", {id:accueilTop.id}) }}" type="button">Modifier</a>
+                                    <a href="{{ path("admin-article-edit", {id:article.id}) }}" type="button">Modifier</a>
                                 </button>
                             </th>
                             <th>
                                 <button type="button" class="btn btn-danger">
-                                    <a href="{{ path("admin-accueil-top-delete", {id:accueilTop.id}) }}" type="button">Supprimer</a>
+                                    <a href="{{ path("admin-article-delete", {id:article.id}) }}" type="button">Supprimer</a>
                                 </button>
                             </th>
                         </tr>

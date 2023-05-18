@@ -1,4 +1,4 @@
-{% extends 'admin/baseAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 
 {% block body %}
@@ -6,10 +6,10 @@
     <h1>Modifier article</h1>
  
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-                <button type="submit" class="btn-form-secondary">Ajouter</button>
-            {{ form_end(form) }}
+            {{ form_start(articles) }}
+            {{ form_widget(articles) }}
+                <button type="submit" class="btn btn-secondary">Ajouter</button>
+            {{ form_end(articles) }}
     </div>
 
 {% endblock %} 

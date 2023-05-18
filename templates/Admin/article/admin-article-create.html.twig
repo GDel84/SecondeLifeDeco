@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crée les Articles!{% endblock %}
+
+{% block body %}
+<div class="carte w-75 p-3 text-center mx-auto my-4">
+
+    <div class="form-group">
+    <h1>Crées Articles</h1>
+ 
+
+            {{ form_start(articles) }}
+            {{ form_widget(articles) }}
+                <button type="submit" class="btn btn-secondary">Ajouter</button>
+
+            {{ form_end(articles) }}
+    </div>
+</div>
+{% endblock %}

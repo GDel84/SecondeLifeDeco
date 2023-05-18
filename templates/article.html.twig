@@ -1,5 +1,38 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
 
+    {{ encore_entry_link_tags('app') }}
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{{ asset('css/animate.css')}}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{{ asset('css/flexslider.css')}}">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+	<style>
+ {% for article in article %}
+	.product-grid{{article.id|raw}}{
+		background: url('{{('../uploads/picture/' ~ article.picture)|raw}}');
+		background-size: cover;
+  		background-position: top center;
+  		background-repeat: no-repeat;
+  		position: relative;
+  		height: 350px;
+  		margin-bottom: 20px;
+  		-webkit-transition: 0.3s;
+  		-o-transition: 0.3s;
+  		transition: 0.3s;
+	}
+	
+ {% endfor %}
+	</style>
+{% endblock %}
 {% block body %}
 <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(photo/deuxChaise.jpg);">
 	<div class="overlay"></div>
@@ -17,109 +50,34 @@
 	</div>
 </header>
 <div id="fh5co-product">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<span>Cool Stuff</span>
-					<h2>Products.</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(photo/IMG_4517.JPG);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Hauteville Concrete Rocking Chair</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(photo/IMG_0041.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Pavilion Speaker</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(photo/IMG_4508.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Ligomancer</a></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(photo/IMG_4516.JPG);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Alato Cabinet</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(photo/IMG_4518.JPG);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Earing Wireless</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(photo/IMG_4519.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Sculptural Coffee Table</a></h3>
-						</div>
-					</div>
-				</div>
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+				<span>Cool Stuff</span>
+				<h2>Products.</h2>
+				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
 			</div>
 		</div>
+		
+		<div class="row">
+		{% for article in article %}
+			<div class="col-md-4 text-center animate-box">
+				<div class="product">
+					<div class="product-grid{{article.id}}" >
+					</div>
+					<div class="desc">
+						<h3><a href="single.html">{{article.Name}}</a></h3>
+						<div class="inner">
+							<p>
+								<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
+</div>
 	{% include 'footer.html.twig' %}
 {% endblock %}
