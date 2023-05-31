@@ -1,19 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Caslon+Text:400,700&display=swap');
-
 body {
-  font-family: Libre Caslon Text;
-  background-color: #6cce80;
+  font-family: 'Libre Caslon' Text;
+  background-color: #aceeb9;
 }
-
-.body-text {
-  padding-top: 20vh;
-  text-align: center;
-  position: relative;
-}
-
-.hamburger-icon {
+.position{
   position: absolute;
   z-index: 1;
+  margin-left: 15%;
+}
+.hamburger-icon {
+  position: absolute;
+  z-index: 9999;
   top: 5vh;
   left: 5vw;
   padding-bottom: 2vh;
@@ -59,6 +56,7 @@ display: none;
 div.menu-pane {
   background-color: #000;
   position: absolute;
+  z-index: 9998;
   transform: translateX(-105vw);
   transform-origin: (0, 0);
   width: 30%;
@@ -148,7 +146,22 @@ input.hamburger-checkbox {
 .carteForm{
   width: 400px;
   height: auto;
-  margin: auto;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   align-content: center;
+  position: absolute;
+}
+/*-------Accueil---------*/
+h1{
+  color: #6cce80;
+}
+.tabAccueil{
+  position: absolute;
+  margin-left: 10%;
+}
+.test{
+  margin-left: 10%;
+}
+.espace{
+  margin: 50px;
+  z-index: 1;
 }

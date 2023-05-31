@@ -1,0 +1,22 @@
+{% extends 'admin/adminNav.html.twig' %}
+{% block body %}
+
+{% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+{% endfor %}
+<div class="carte-form">
+<h1 class = "title">Modifier les abonnés</h1>
+
+    {{ form_start(user) }}
+        
+        {{ form_row(user.name, {
+            label:'Nom:'
+        }) }}
+        {{ form_row(user.roles) }}
+        {{ form_row(user.email) }}
+
+    <button type="submit" class="btn btn-primary m-2">Modifier</button>
+    {{ form_end(user) }}
+</div>
+
+{% endblock %} 

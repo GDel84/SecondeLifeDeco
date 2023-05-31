@@ -1,0 +1,29 @@
+{% extends "admin/adminNav.html.twig" %}
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+<div class="tabAccueil">
+    <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>email</th>
+                            <th>Role</th>
+                        </tr> 
+                    </thead>
+                    <tbody> 
+                    {% for user in users %}
+                        <tr>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.roles [0]|default('')|replace({'ROLE_ADMIN': 'Admin', 'ROLE_USER': 'Client'})}}</td>
+                            <td><a href="{{ path("admin-user-edit", {id:user.id}) }}" type="button" class="btn btn-outline-primary">
+                                    <i class="fa fa-pencil"></i>
+                                </a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+    </table>
+</div>
+
+{% endblock %} 

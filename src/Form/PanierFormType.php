@@ -6,6 +6,7 @@ use App\Entity\Panier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -35,6 +36,13 @@ class PanierFormType extends AbstractType
             ])
             ->add('lieu')
             ->add('Articles')
+            //->add('quantity', IntegerType::class, [
+            //    'label' => 'Quantité',
+            //    'attr' => [
+            //        'min' => 1,
+            //        'max' => $options['article']->getQuantity(), // Limite maximale basée sur le stock disponible
+            //    ],
+            //])
         ;
     }
 
@@ -42,6 +50,7 @@ class PanierFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Panier::class,
+            'article' => null, // option pour passer l'entité Article
         ]);
     }
 }

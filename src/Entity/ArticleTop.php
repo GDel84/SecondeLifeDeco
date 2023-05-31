@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\AccueilBottomRepository;
+use App\Repository\ArticleTopRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AccueilBottomRepository::class)]
-class AccueilBottom
+#[ORM\Entity(repositoryClass: ArticleTopRepository::class)]
+class ArticleTop
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,10 +17,10 @@ class AccueilBottom
     private ?string $Title = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Text = null;
+    private ?string $text = null;
 
-    #[ORM\Column(length: 25, nullable: true)]
-    private ?string $Link = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $picture = null;
 
     public function getId(): ?int
     {
@@ -41,24 +41,24 @@ class AccueilBottom
 
     public function getText(): ?string
     {
-        return $this->Text;
+        return $this->text;
     }
 
-    public function setText(?string $Text): self
+    public function setText(?string $text): self
     {
-        $this->Text = $Text;
+        $this->text = $text;
 
         return $this;
     }
 
-    public function getLink(): ?string
+    public function getPicture(): ?string
     {
-        return $this->Link;
+        return $this->picture;
     }
 
-    public function setLink(?string $Link): self
+    public function setPicture(?string $picture): self
     {
-        $this->Link = $Link;
+        $this->picture = $picture;
 
         return $this;
     }

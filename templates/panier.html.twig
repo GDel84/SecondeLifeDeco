@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block title %}Mon Panier{% endblock %}
+
+
+{% block body %}
+<section class="bg-light p-3">
+    <h1 class="">Votre panier</h1>
+</section>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                {% for element in dataPanier %}
+                    <td>{{ element.article.Name }}</td>
+                    <td>{{ element.quantite }}</td>
+                    <td>
+                        <a href="{{path("add", {id: element.article.id})}}" class="btn btn-success">
+                            <i class="bi bi-cart-plus"></i>
+                        </a>
+                        <a href="{{path("remove", {id: element.article.id})}}" class="btn btn-warning">
+                            <i class="bi bi-cart-dash"></i>
+                        </a>
+                        <a href="{{path("delete", {id: element.article.id})}}" class="btn btn-danger">
+                            <i class="bi bi-cart-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% include 'footer.html.twig' %}
+
+{% endblock %} 

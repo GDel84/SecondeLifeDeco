@@ -59,6 +59,8 @@ class AccueilController extends AbstractController
                 $em->persist($accueil);
                 $em->flush();
 
+                return $this->redirectToRoute('admin-accueil');
+
             }
         return $this->render('admin/accueil/admin-accueil-top-create.html.twig', [
             'accueilTop' => $form->createView()
@@ -110,7 +112,7 @@ class AccueilController extends AbstractController
     }
 
     #[Route('/admin/accueil/top/delete/{id}', name: 'admin-accueil-top-delete')]
-    public function productDelete(AccueilTop $accueilTop, ManagerRegistry $doctrine): RedirectResponse
+    public function accueilDelete(AccueilTop $accueilTop, ManagerRegistry $doctrine): RedirectResponse
     {
             $em = $doctrine->getManager();
             $em->remove($accueilTop);

@@ -1,0 +1,15 @@
+{% extends 'admin/adminNav.html.twig' %}
+
+
+{% block body %}
+<div class="carteForm">
+    <h1>Modifier en-tête</h1>
+ 
+
+            {{ form_start(articleTop) }}
+            {{ form_widget(articleTop) }}
+                <button type="submit" class="btn btn-secondary">Modifier</button>
+            {{ form_end(articleTop) }}
+    </div>
+
+{% endblock %} 

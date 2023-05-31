@@ -29,21 +29,30 @@
   		-o-transition: 0.3s;
   		transition: 0.3s;
 	}
-	
- {% endfor %}
+{% endfor %}
+{% for articleTop in articleTops %}
+	.fh5co-cover{{articleTop.id|raw}}{
+		background: url('{{('../uploads/picture/' ~ articleTop.picture)|raw}}');
+
+
+	}
+{% endfor %}
 	</style>
 {% endblock %}
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(photo/deuxChaise.jpg);">
+{% for articleTop in articleTops %}
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm {{articleTop.id}}" role="banner" style="background-image:url(photo/deuxChaise.jpg);">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2 text-center">
 				<div class="display-t">
+				
 					<div class="display-tc animate-box" data-animate-effect="fadeIn">
-						<h1>Product</h1>
-						<h2>Free html5 templates Made by <a href="http://freehtml5.co" target="_blank">freehtml5.co</a></h2>
+						<h1>{{articleTop.title}}</h1>
+						<h2>{{articleTop.text}} </h2>
 					</div>
+				{% endfor %}
 				</div>
 			</div>
 		</div>
@@ -53,23 +62,26 @@
 	<div class="container">
 		<div class="row animate-box">
 			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-				<span>Cool Stuff</span>
-				<h2>Products.</h2>
-				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+			{% for articleCenter in articleCenters %}
+				<h2>{{articleCenter.title}}</h2>
+				<p>{{articleCenter.text}}</p>
 			</div>
+			{% endfor %}
 		</div>
 		
 		<div class="row">
 		{% for article in article %}
 			<div class="col-md-4 text-center animate-box">
 				<div class="product">
-					<div class="product-grid{{article.id}}" >
+					<div class="product-grid{{article.id}}">
 					</div>
 					<div class="desc">
 						<h3><a href="single.html">{{article.Name}}</a></h3>
 						<div class="inner">
+							<label>Quantité</label>
+							<select name="quantity" value="{{article.Quantity}}"></select>
 							<p>
-								<a href="single.html" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
+								<a href="{{ path("add", {id:article.id}) }}" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
 							</p>
 						</div>
 					</div>

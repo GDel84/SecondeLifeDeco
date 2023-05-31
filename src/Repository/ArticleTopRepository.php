@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\AccueilBottom;
+use App\Entity\ArticleTop;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<AccueilBottom>
+ * @extends ServiceEntityRepository<ArticleTop>
  *
- * @method AccueilBottom|null find($id, $lockMode = null, $lockVersion = null)
- * @method AccueilBottom|null findOneBy(array $criteria, array $orderBy = null)
- * @method AccueilBottom[]    findAll()
- * @method AccueilBottom[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ArticleTop|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ArticleTop|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ArticleTop[]    findAll()
+ * @method ArticleTop[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AccueilBottomRepository extends ServiceEntityRepository
+class ArticleTopRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, AccueilBottom::class);
+        parent::__construct($registry, ArticleTop::class);
     }
 
-    public function save(AccueilBottom $entity, bool $flush = false): void
+    public function save(ArticleTop $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AccueilBottomRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(AccueilBottom $entity, bool $flush = false): void
+    public function remove(ArticleTop $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class AccueilBottomRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return AccueilBottom[] Returns an array of AccueilBottom objects
+//     * @return ArticleTop[] Returns an array of ArticleTop objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class AccueilBottomRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?AccueilBottom
+//    public function findOneBySomeField($value): ?ArticleTop
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

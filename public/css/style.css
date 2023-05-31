@@ -180,6 +180,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul {
   padding: 0;
   margin: 0;
+  margin-top: 30px;
 }
 .fh5co-nav ul li {
   padding: 0;
@@ -189,7 +190,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-family: "Montserrat", Arial, sans-serif;
 }
 .fh5co-nav ul li a {
-  font-size: 13px;
+  font-size: 20px;
   padding: 30px 10px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.5);
@@ -304,7 +305,6 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-hero .flexslider .slides {
   position: relative;
-  overflow: hidden;
 }
 #fh5co-hero .flexslider .slides li {
   background-repeat: no-repeat;
@@ -355,12 +355,6 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .desc {
   background: rgba(255, 255, 255, 0.9);
   padding: 40px;
-}
-#fh5co-hero .flexslider .slider-text > .slider-text-inner .desc .price {
-  font-size: 14px;
-  letter-spacing: 3px;
-  display: block;
-  margin-bottom: 20px;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn {
   font-size: 18px;
@@ -530,7 +524,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 .fh5co-social-icons li a {
   display: -moz-inline-stack;
@@ -787,9 +781,6 @@ h1, h2, h3, h4, h5, h6, figure {
 .product {
   margin-bottom: 40px;
 }
-.product .product-grid {
-  
-}
 .product .product-grid .sale {
   position: absolute;
   top: 10px;
@@ -803,15 +794,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -ms-border-radius: 50%;
   border-radius: 50%;
 }
-.inner {
-  display: table;
-  height: 50px;
-  width: 20%;
-  opacity: 0;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
+
 @media screen and (max-width: 768px) {
   .product .product-grid .inner {
     opacity: 1;
@@ -825,14 +808,10 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .inner p .icon {
   padding: 7px 10px;
-  
   color: #fff;
   background: #d1c286;
 }
-.product .product-grid .inner p .icon:hover, .product .product-grid .inner p .icon:focus {
-  color: #047D1C;
-  background: #fff;
-}
+
 .product .desc h3 {
   font-size: 14px;
   letter-spacing: 1px;
@@ -844,22 +823,12 @@ h1, h2, h3, h4, h5, h6, figure {
 .product .desc h3 a {
   color: #000;
 }
-.product .desc .price {
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
 .product:hover .product-grid, .product:focus .product-grid {
   -webkit-box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.35);
   -moz-box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.35);
   -ms-box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.35);
   -o-box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.35);
   box-shadow: 0px 10px 24px -7px rgba(0, 0, 0, 0.35);
-}
-.product:hover .inner, .product:focus .inner {
-  opacity: 1;
-}
-.product:hover .desc h3 a, .product:focus .desc h3 a {
-  color: #047D1C;
 }
 
 .product-carousel {
@@ -1681,3 +1650,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.carteForm{
+  margin-left: 25px;
+}
