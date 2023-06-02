@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Form\UserAdminFormType;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -23,7 +24,7 @@ class UserAdminController extends AbstractController
     }
 
     #[Route('admin/user/edit/{id}', name: 'admin-user-edit')]
-    public function userEdit(ManagerRegistry $doctrine, $id, Request $request)
+    public function userAdminEdit(ManagerRegistry $doctrine, $id, Request $request)
     {
         $userRepo = $doctrine->getRepository(User::class);
         $user = $userRepo->findOneBy(['id'=>$id]);

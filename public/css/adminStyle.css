@@ -104,18 +104,18 @@ div.menu-pane {
 
 
 .menu-links li:hover a {
-  color: #FFAB91;
+  color: #d5ff91;
 }
 
 .menu-links li:first-child:hover a {
   color: black;  
-  background-color: #FFAB91;
+  background-color: #d5ff91;
 }
 
 #QC-info {
-  background-color: #FFAB91;
+  background-color: #d5ff91;
     border: 2px solid;
-  border-color: #FFAB91;
+  border-color: #d5ff91;
 display: block;
   opacity: 0;
   
