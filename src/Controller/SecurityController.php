@@ -8,14 +8,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, SessionInterface $session): Response
     {
+        $panier = $session->get("panier", []);
+        $nombreArticlesPanier = count($panier);
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
@@ -26,7 +29,8 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername, 'error' => $error
+            'last_username' => $lastUsername, 'error' => $error,
+            'nombreArticlesPanier' => $nombreArticlesPanier,
         ]);
     }
 
@@ -37,8 +41,11 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path:'/account', name:'compte')]
-    public function monCompte(ManagerRegistry $doctrine, Security $security, Request $request):Response
+    public function monCompte(ManagerRegistry $doctrine, Security $security, Request $request, SessionInterface $session):Response
     {
+        $panier = $session->get("panier", []);
+        $nombreArticlesPanier = count($panier);
+
         $user = $security->getUser();
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
@@ -52,13 +59,16 @@ class SecurityController extends AbstractController
 
         return $this->render('security/account.html.twig',[
             'user' => $form->createView(),
+            'nombreArticlesPanier' => $nombreArticlesPanier,
         ]);
     }
 
     #[Route('/user', name: 'app_user')]
-    public function index(ManagerRegistry $doctrine, Request $request, Security $security): Response
+    public function index(ManagerRegistry $doctrine, Request $request, Security $security, SessionInterface $session): Response
     {
-        
+            $panier = $session->get("panier", []);
+            $nombreArticlesPanier = count($panier);
+
         //recuperer le user connecte
         //creer le form type et gerer la soumission
             //persister l'object
@@ -79,6 +89,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/account.html.twig', [
             'user' => $form->createView(),
+            'nombreArticlesPanier' => $nombreArticlesPanier,
         ]);
     }
 }

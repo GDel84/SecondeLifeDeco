@@ -40,10 +40,12 @@ class DefaultController extends AbstractController
         ]);
     }
     #[Route('/contact', name: 'contact')]
-    public function contact(): Response
+    public function contact(SessionInterface $session): Response
     {
+        $panier = $session->get("panier", []);
+        $nombreArticlesPanier = count($panier);
+
         return $this->render('contact.html.twig', [
-            'controller_name' => 'DefaultController',
-        ]);
+        'nombreArticlesPanier' => $nombreArticlesPanier,        ]);
     }
 }
