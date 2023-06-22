@@ -26,6 +26,7 @@ class DefaultController extends AbstractController
             'nombreArticlesPanier' => $nombreArticlesPanier,
         ]);
     }
+
     #[Route('/article', name: 'article')]
     public function article(ArticleRepository $articleRepo, ArticleTopRepository $artTopRepo, ArticleCenterRepository $artCenterRepo, SessionInterface $session): Response
     {
@@ -33,12 +34,13 @@ class DefaultController extends AbstractController
         $nombreArticlesPanier = count($panier);
 
         return $this->render('article.html.twig', [
-            'article' => $articleRepo->findAll(),
+            'articles' => $articleRepo->findAll(),
             'articleTops' =>$artTopRepo->findAll(),
             'articleCenters' =>$artCenterRepo->findAll(),
             'nombreArticlesPanier' => $nombreArticlesPanier,
         ]);
     }
+
     #[Route('/contact', name: 'contact')]
     public function contact(SessionInterface $session): Response
     {

@@ -1,22 +1,7 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
-
-    {{ encore_entry_link_tags('app') }}
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{ asset('css/animate.css')}}">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
-
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="{{ asset('css/flexslider.css')}}">
-
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')}}">
-
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
 	<style>
- {% for article in article %}
+ {% for article in articles %}
 	.product-grid{{article.id|raw}}{
 		background: url('{{('../uploads/picture/' ~ article.picture)|raw}}');
 		background-size: cover;
@@ -33,8 +18,6 @@
 {% for articleTop in articleTops %}
 	.fh5co-cover{{articleTop.id|raw}}{
 		background: url('{{('../uploads/picture/' ~ articleTop.picture)|raw}}');
-
-
 	}
 {% endfor %}
 	</style>
@@ -70,7 +53,7 @@
 		</div>
 		
 		<div class="row">
-		{% for article in article %}
+		{% for article in articles %}
 			<div class="col-md-4 text-center animate-box">
 				<div class="product">
 					<div class="product-grid{{article.id}}">
@@ -78,11 +61,18 @@
 					<div class="desc">
 						<h3><a href="single.html">{{article.Name}}</a></h3>
 						<div class="inner">
+						<form action="{{ path("add", {id:article.id}) }}" method="post">
 							<label>Quantité</label>
-							<select name="quantity" value="{{article.Quantity}}"></select>
+							<select name="quantity">
+								{% for i  in 1..article.Quantity %}
+									<option value="{{i}}">{{i}}</option>
+								{% endfor %}
+							</select>
+							<input type="submit" class="icon" value="Envoyer le formulaire">
 							<p>
 								<a href="{{ path("add", {id:article.id}) }}" class="icon"><ion-icon name="cart-outline"></ion-icon></a>
 							</p>
+						</form>
 						</div>
 					</div>
 				</div>

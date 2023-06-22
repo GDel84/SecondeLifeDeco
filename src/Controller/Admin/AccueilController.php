@@ -98,7 +98,7 @@ class AccueilController extends AbstractController
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $accueilTop->setPicture($newFilename);
-        }
+            }
             $em = $doctrine->getManager();
             $em->persist($accueilTop);
             $em->flush();

@@ -1,0 +1,16 @@
+{% extends 'admin/adminNav.html.twig' %}
+
+{% block title %}modifier un devis{% endblock %}
+
+{% block body %}
+
+<div class="carteForm">
+    <h1>Modifier poste accueil</h1>
+ 
+
+        {{ form_start(devis) }}
+        {{ form_widget(devis) }}
+            <button type="submit" class="btn btn-secondary">Ajouter</button>
+        {{ form_end(deivs) }}
+</div>
+{% endblock %}

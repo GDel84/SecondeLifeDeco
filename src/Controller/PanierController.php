@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Panier;
+use App\Entity\Devis;
+use App\Form\DevisFormType;
 use App\Form\PanierFormType;
 use App\Repository\ArticleRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Monolog\Handler\Handler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,30 +18,69 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PanierController extends AbstractController
 {
-    #[Route('/test', name: 'test')]
-    public function panier(Request $request, ManagerRegistry $doctrine, ArticleRepository $articleRepo): Response
+    #[Route('/devis', name: 'devis')]
+    public function panier(Request $request, ManagerRegistry $doctrine, MailerInterface $mailer, SessionInterface $session): Response
     {
-        $panier = new Panier;
-        $form = $this->createForm(PanierFormType::class, $panier);
+        $devis = new Devis;
+        $form = $this->createForm(DevisFormType::class, $devis);
         $form->handleRequest($request);
 
-        $em = $doctrine->getManager();
-        $em->persist($panier);
-        $em->flush();
+        $panier = $session->get("panier", []);
+        $nombreArticlesPanier = count($panier);
+        
+        $articlerepo = $doctrine->getRepository(Article::class);
 
+        if($form->isSubmitted() && $form->isValid()){
+            $texteDevis = "";
+            foreach(array_keys($panier) as $element){
+                $articleachete = $articlerepo->findOneBy(['id'=>$element]);
+                $texteDevis .= "Nom : ".$articleachete->getName()."\n";
+                $texteDevis .= "Qt souhaitee : ".$panier[$element]."\n";
+            }
+            $devis->setCommande($texteDevis);
+            $em = $doctrine->getManager();
+            $em->persist($devis);
+            $em->flush();
 
-        return $this->render('panier.html.twig', [
-            'panier' => $form->createView(),
-            'article'=> $articleRepo->findOneBy(array(), array())
+            
+            $emailCleint = $devis->getEmail();
+
+            // Construire le contenu de l'e-mail
+            $message = $this->renderView('email/panier.html.twig', ['devis' => $devis]);
+
+            // Créer l'objet Email
+            $email = (new Email())
+                ->from($emailCleint)
+                ->to($emailCleint)
+                ->subject('Devis pour le panier')
+                ->html($message);
+
+            $message = $this->renderView('email/panier.html.twig', ['devis' => $devis]);
+
+            // Créer l'objet Email
+            $email = (new Email())
+                ->from($emailCleint)
+                ->to('g-del@hotmail.fr')
+                ->subject('Devis pour le panier')
+                ->html($message);
+
+            // Envoyer l'e-mail
+            $mailer->send($email);
+
+            $session->remove("panier");
+
+            return $this->redirectToRoute('accueil');
+        }
+
+        return $this->render('devis.html.twig', [
+            'devis' => $form->createView(),
+            'nombreArticlesPanier' => $nombreArticlesPanier,
         ]);
     }
+
     #[Route('/panier', name:'panier')]
-    public function test(Request $request, SessionInterface $session, ArticleRepository $articleRepo, MailerInterface $mailer)
+    public function test(Request $request, SessionInterface $session, ArticleRepository $articleRepo)
     {
-        //recuperation du formulaire panier
-        $panier = new Panier;
-        $form = $this->createForm(PanierFormType::class, $panier);
-        $form->handleRequest($request);
 
         //mettre en memoir dans session les article choisie dans panier
         $panier = $session->get("panier", []);
@@ -58,19 +97,6 @@ class PanierController extends AbstractController
                 "quantite" => $quantity
             ];
         }
-    
-        // Construire le contenu de l'e-mail
-        $message = $this->renderView('email/panier.html.twig', ['dataPanier' => $dataPanier]);
-    
-        // Créer l'objet Email
-        $email = (new Email())
-            ->from('test@mail.fr')
-            ->to('g-del@hotmail.fr')
-            ->subject('Devis pour le panier')
-            ->html($message);
-    
-        // Envoyer l'e-mail
-        $mailer->send($email);
 
         return $this->render('panier.html.twig', [
             'dataPanier' => $dataPanier,
@@ -78,16 +104,17 @@ class PanierController extends AbstractController
         ]);
     }
 
-    #[Route('/add/{id}', name :'add')]
-    public function add(Article $article, $id, SessionInterface $session)
+    #[Route('/add/{id}', name :'add', methods:["GET","POST"])]
+    public function add(Article $article, $id, SessionInterface $session, Request $request)
     {
+
         $panier = $session->get("panier", []);
         $id = $article->getId();
 
         if(!empty($panier[$id])){
-            $panier[$id]++;
+            $panier[$id] = $panier[$id]+intval($request->get('quantity'));
         }else{
-            $panier[$id] = 1;
+            $panier[$id] = intval($request->get('quantity'));
         }
 
         // sauvegrade dans la session

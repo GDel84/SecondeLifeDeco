@@ -6,8 +6,7 @@
         <title>{% block title %}Second Life Déco{% endblock %}</title>
         <link rel="icon" href={{asset('../photo/Logo.png')}}>
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+		{{ encore_entry_link_tags('app') }}
             	<!-- Animate.css -->
 	            <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
 	            <!-- Bootstrap  -->
@@ -22,6 +21,8 @@
 
 	            <!-- Theme style  -->
             	<link rel="stylesheet" href="{{ asset('css/style.css')}}">
+        {% block stylesheets %}
+            
         {% endblock %}
 
            {% include 'nav.html.twig' %}

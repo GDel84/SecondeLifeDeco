@@ -27,12 +27,12 @@ class Article
     #[ORM\Column(nullable: true)]
     private ?int $OrederArticle = null;
 
-    #[ORM\OneToMany(mappedBy: 'Articles', targetEntity: Panier::class)]
-    private Collection $paniers;
+    #[ORM\OneToMany(mappedBy: 'Articles', targetEntity: Devis::class)]
+    private Collection $devis;
 
     public function __construct()
     {
-        $this->paniers = new ArrayCollection();
+        $this->devis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,29 +89,29 @@ class Article
     }
 
     /**
-     * @return Collection<int, Panier>
+     * @return Collection<int, Devis>
      */
-    public function getPaniers(): Collection
+    public function getDevis(): Collection
     {
-        return $this->paniers;
+        return $this->devis;
     }
 
-    public function addPanier(Panier $panier): self
+    public function addDevis(Devis $devis): self
     {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers->add($panier);
-            $panier->setArticles($this);
+        if (!$this->devis->contains($devis)) {
+            $this->devis->add($devis);
+            $devis->setArticles($this);
         }
 
         return $this;
     }
 
-    public function removePanier(Panier $panier): self
+    public function removeDevis(Devis $devis): self
     {
-        if ($this->paniers->removeElement($panier)) {
+        if ($this->devis->removeElement($devis)) {
             // set the owning side to null (unless already changed)
-            if ($panier->getArticles() === $this) {
-                $panier->setArticles(null);
+            if ($devis->getArticles() === $this) {
+                $devis->setArticles(null);
             }
         }
 
