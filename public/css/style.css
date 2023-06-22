@@ -802,7 +802,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .inner p {
-  display: table-cell;
+  display: contents;
   vertical-align: middle;
   margin-left: 50%;
 }
@@ -857,7 +857,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 .fh5co-tabs .fh5co-tab-nav li .icon {
   font-size: 30px;
@@ -1011,7 +1011,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: -moz-inline-stack;
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 #fh5co-testimonial .testimony-slide figure img {
   width: 100px;
