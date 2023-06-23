@@ -3,14 +3,16 @@
 {% block title %}Devis{% endblock %}
 
 {% block body %}
-<div class="carteForm">
-    <h1>Devis</h1>
- 
+<div class="devis">
+    <h1 class="titleForm">Devis</h1>
 
         {{ form_start(devis) }}
         {{ form_widget(devis) }}
-            <button type="submit" class="btn btn-secondary">Ajouter</button>
-        {{ form_end(devis) }}
+        <div class="btnForm">
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+       {{ form_end(devis) }}
+   
 </div>
 {% include 'footer.html.twig' %}
 
