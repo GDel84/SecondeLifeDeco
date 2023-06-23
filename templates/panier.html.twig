@@ -3,6 +3,7 @@
 
 
 {% block body %}
+<div class="panier">
 <section class="bg-light p-3">
     <h1 class="">Votre panier</h1>
 </section>
@@ -23,14 +24,19 @@
                     <td>{{ element.article.Name }}</td>
                     <td>{{ element.quantite }}</td>
                     <td>
-                        <a href="{{path("add", {id: element.article.id})}}" class="btn btn-success">
-                            <i class="bi bi-cart-plus"></i>
+                    <form action="{{ path("add") }}" method="post">
+                        <input type="hidden" value="{{element.article.id}}" name="id">
+                        <input type="hidden" value="1" name="quantity">
+						<input type="submit" class="icon" value="+">
+                    </form>
+                            <ion-icon name="bag-add-outline"></ion-icon>                        
                         </a>
                         <a href="{{path("remove", {id: element.article.id})}}" class="btn btn-warning">
-                            <i class="bi bi-cart-dash"></i>
+                            <ion-icon name="bag-remove-outline"></ion-icon>
                         </a>
                         <a href="{{path("delete", {id: element.article.id})}}" class="btn btn-danger">
-                            <i class="bi bi-cart-x"></i>
+                            <ion-icon name="trash-outline"></ion-icon>
+                           
                         </a>
                     </td>
                 </tr>
@@ -41,9 +47,10 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('devis') }}" class="btn btn-primary">Envoyer le devis</a>
-
+    <div class="btnPanier">
+        <a href="{{ path('devis') }}" class="btn btn-primary">Envoyer le devis</a>
+    </div>
+</div>
 
 {% include 'footer.html.twig' %}
-
 {% endblock %} 
