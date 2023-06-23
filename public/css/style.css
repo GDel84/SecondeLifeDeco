@@ -1654,3 +1654,45 @@ h1, h2, h3, h4, h5, h6, figure {
 .carteForm{
   margin-left: 25px;
 }
+
+/*-------panier-----------*/
+
+.panier{
+  max-width: 70%;
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+.btnPanier{
+  align-items: flex-end;
+  margin: auto;
+}
+/*--------FormDevis----------*/
+.titleForm{
+  text-align: center;
+}
+
+.devis{
+  max-width: 25%;
+  margin: auto;
+  margin-bottom: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: center;
+  align-items: center;
+  background-color: #efefef;
+}
+.inputclass{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.radio{
+  align-items: center;
+
+}
+.btnForm{
+  margin: auto;
+  margin-top: 25px;
+  align-items: center;
+}
