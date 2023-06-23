@@ -17,14 +17,11 @@ class Devis
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $livraison = null;
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $livraison = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $lieu = null;
-
-    #[ORM\ManyToOne(inversedBy: 'paniers')]
-    private ?Article $Articles = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateFin = null;
@@ -58,12 +55,12 @@ class Devis
         return $this;
     }
 
-    public function getLivraison(): ?bool
+    public function getLivraison(): ?string
     {
         return $this->livraison;
     }
 
-    public function setLivraison(?bool $livraison): self
+    public function setLivraison(?string $livraison): self
     {
         $this->livraison = $livraison;
 
@@ -82,18 +79,6 @@ class Devis
         return $this;
     }
 
-    public function getArticles(): ?Article
-    {
-        return $this->Articles;
-    }
-
-    public function setArticles(?Article $Articles): self
-    {
-        $this->Articles = $Articles;
-
-        return $this;
-    }
-
     public function getDateFin(): ?\DateTimeInterface
     {
         return $this->dateFin;
@@ -104,10 +89,6 @@ class Devis
         $this->dateFin = $dateFin;
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->getArticles();
     }
 
     public function getName(): ?string
