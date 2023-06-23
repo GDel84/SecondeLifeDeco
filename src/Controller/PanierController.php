@@ -7,7 +7,9 @@ use App\Entity\Devis;
 use App\Form\DevisFormType;
 use App\Form\PanierFormType;
 use App\Repository\ArticleRepository;
+use App\Services\PanierServices;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,8 +36,8 @@ class PanierController extends AbstractController
             $texteDevis = "";
             foreach(array_keys($panier) as $element){
                 $articleachete = $articlerepo->findOneBy(['id'=>$element]);
-                $texteDevis .= "Nom : ".$articleachete->getName()."\n";
-                $texteDevis .= "Qt souhaitee : ".$panier[$element]."\n";
+                $texteDevis .= "Nom : ".$articleachete->getName()."\n\r";
+                $texteDevis .= "Qt souhaitee : ".$panier[$element]."\n\r";
             }
             $devis->setCommande($texteDevis);
             $em = $doctrine->getManager();
@@ -104,57 +106,26 @@ class PanierController extends AbstractController
         ]);
     }
 
-    #[Route('/add/{id}', name :'add', methods:["GET","POST"])]
-    public function add(Article $article, $id, SessionInterface $session, Request $request)
+    #[Route('/add', name :'add', methods:["GET","POST"])]
+    public function add(SessionInterface $session, Request $request, ManagerRegistry $doctrine, ArticleRepository $ArticleRepo, PanierServices $panierServices)
     {
-
-        $panier = $session->get("panier", []);
-        $id = $article->getId();
-
-        if(!empty($panier[$id])){
-            $panier[$id] = $panier[$id]+intval($request->get('quantity'));
-        }else{
-            $panier[$id] = intval($request->get('quantity'));
-        }
-
-        // sauvegrade dans la session
-        $session->set("panier", $panier);
+        $panierServices->addPanier($request->request->get('id'), $request->request->get('quantity'));
 
         return $this->redirectToRoute("panier");
     }
+
     #[Route('/remove/{id}', name :'remove')]
-    public function remove(Article $article, $id, SessionInterface $session)
+    public function remove(Article $article, $id, Request $request, SessionInterface $session, PanierServices $panierServices)
     {
-        $panier = $session->get("panier", []);
-        $id = $article->getId();
 
-        if(!empty($panier[$id])){
-            if($panier[$id] > 1){
-                $panier[$id]--;
-        }else{
-            unset($panier[$id]);
-        }
-        }else{
-            $panier[$id] = 1;
-        }
-
-        // sauvegrade dans la session
-        $session->set("panier", $panier);
+        $panierServices->removePanier($id);
 
         return $this->redirectToRoute("panier");
     }
     #[Route('/delete/{id}', name :'delete')]
-    public function delete(Article $article, $id, SessionInterface $session)
+    public function delete(Request $request, PanierServices $panierServices, $id, SessionInterface $session)
     {
-        $panier = $session->get("panier", []);
-        $id = $article->getId();
-
-        if(!empty($panier[$id])){
-            unset($panier[$id]);
-        }
-
-        // sauvegrade dans la session
-        $session->set("panier", $panier);
+        $panierServices->deletePanier($id);
 
         return $this->redirectToRoute("panier");
     }
