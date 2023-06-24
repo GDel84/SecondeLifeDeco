@@ -27,9 +27,10 @@
                     <form action="{{ path("add") }}" method="post">
                         <input type="hidden" value="{{element.article.id}}" name="id">
                         <input type="hidden" value="1" name="quantity">
-						<input type="submit" class="icon" value="+">
+						<button type="submit" class="icon-button btn-success">
+                            <ion-icon name="bag-add-outline"></ion-icon>
+                        </button>
                     </form>
-                            <ion-icon name="bag-add-outline"></ion-icon>                        
                         </a>
                         <a href="{{path("remove", {id: element.article.id})}}" class="btn btn-warning">
                             <ion-icon name="bag-remove-outline"></ion-icon>
