@@ -807,9 +807,12 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-left: 50%;
 }
 .inner p .icon {
-  padding: 7px 8px;
+  padding: 1px 10px;
+  font-size: 19px;
   color: #fff;
   background: #d1c286;
+  border: none;
+  margin: auto;
 }
 
 .product .desc h3 {
