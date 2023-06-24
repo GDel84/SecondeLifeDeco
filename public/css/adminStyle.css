@@ -143,13 +143,7 @@ input.hamburger-checkbox {
   height: 6vh;
 }
 
-.carteForm{
-  width: 400px;
-  height: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  align-content: center;
-  position: absolute;
-}
+
 /*-------Accueil---------*/
 h1{
   color: #6cce80;
@@ -164,4 +158,13 @@ h1{
 .espace{
   margin: 50px;
   z-index: 1;
+}
+
+/*---------form----------*/
+.carteForm{
+  max-width: 60%;
+  margin: auto;
+  width: 400px;
+  height: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
