@@ -69,9 +69,11 @@
 								{% endfor %}
 							</select>
 							<p>
-								<input type="hidden" value="{{article.id}}" name="id">
-								<input type="submit" class="icon" value="+">
-								<a class="icon"><ion-icon name="cart-outline"></ion-icon></a>
+								
+								<button type="submit" class="icon">
+									<input type="hidden" value="{{article.id}}" name="id">
+        							<ion-icon name="cart-outline"></ion-icon>
+    							</button>
 							</p>
 						</form>
 						</div>
