@@ -7,6 +7,7 @@ use App\Entity\Devis;
 use App\Form\DevisFormType;
 use App\Form\PanierFormType;
 use App\Repository\ArticleRepository;
+use App\Repository\FooterRepository;
 use App\Services\PanierServices;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
@@ -21,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierController extends AbstractController
 {
     #[Route('/devis', name: 'devis')]
-    public function panier(Request $request, ManagerRegistry $doctrine, MailerInterface $mailer, SessionInterface $session): Response
+    public function panier(FooterRepository $footerRepo, Request $request, ManagerRegistry $doctrine, MailerInterface $mailer, SessionInterface $session): Response
     {
         $devis = new Devis;
         $form = $this->createForm(DevisFormType::class, $devis);
@@ -77,11 +78,12 @@ class PanierController extends AbstractController
         return $this->render('devis.html.twig', [
             'devis' => $form->createView(),
             'nombreArticlesPanier' => $nombreArticlesPanier,
+            'footers' => $footerRepo->findAll(),
         ]);
     }
 
     #[Route('/panier', name:'panier')]
-    public function test(Request $request, SessionInterface $session, ArticleRepository $articleRepo)
+    public function test(FooterRepository $footerRepo, SessionInterface $session, ArticleRepository $articleRepo)
     {
 
         //mettre en memoir dans session les article choisie dans panier
@@ -103,6 +105,7 @@ class PanierController extends AbstractController
         return $this->render('panier.html.twig', [
             'dataPanier' => $dataPanier,
             'nombreArticlesPanier' => $nombreArticlesPanier,
+            'footers' => $footerRepo->findAll(),
         ]);
     }
 

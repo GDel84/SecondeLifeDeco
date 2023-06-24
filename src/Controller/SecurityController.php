@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserFormType;
+use App\Repository\FooterRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils, SessionInterface $session): Response
+    public function login(FooterRepository $footerRepo, AuthenticationUtils $authenticationUtils, SessionInterface $session): Response
     {
         $panier = $session->get("panier", []);
         $nombreArticlesPanier = count($panier);
@@ -31,6 +32,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername, 'error' => $error,
             'nombreArticlesPanier' => $nombreArticlesPanier,
+            'footers' => $footerRepo->findAll(),
         ]);
     }
 
@@ -41,7 +43,7 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path:'/account', name:'compte')]
-    public function monCompte(ManagerRegistry $doctrine, Security $security, Request $request, SessionInterface $session):Response
+    public function monCompte(FooterRepository $footerRepo, ManagerRegistry $doctrine, Security $security, Request $request, SessionInterface $session):Response
     {
         $panier = $session->get("panier", []);
         $nombreArticlesPanier = count($panier);
@@ -60,11 +62,12 @@ class SecurityController extends AbstractController
         return $this->render('security/account.html.twig',[
             'user' => $form->createView(),
             'nombreArticlesPanier' => $nombreArticlesPanier,
+            'footers' => $footerRepo->findAll(),
         ]);
     }
 
     #[Route('/user', name: 'app_user')]
-    public function index(ManagerRegistry $doctrine, Request $request, Security $security, SessionInterface $session): Response
+    public function index(FooterRepository $footerRepo, ManagerRegistry $doctrine, Request $request, Security $security, SessionInterface $session): Response
     {
             $panier = $session->get("panier", []);
             $nombreArticlesPanier = count($panier);
@@ -90,6 +93,7 @@ class SecurityController extends AbstractController
         return $this->render('security/account.html.twig', [
             'user' => $form->createView(),
             'nombreArticlesPanier' => $nombreArticlesPanier,
+            'footers' => $footerRepo->findAll(),
         ]);
     }
 }

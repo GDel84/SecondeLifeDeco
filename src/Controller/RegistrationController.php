@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\FooterRepository;
 use App\Security\EmailVerifier;
 use App\Security\UserAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,7 +30,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, SessionInterface $session): Response
+    public function register(FooterRepository $footerRepo, Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         $panier = $session->get("panier", []);
         $nombreArticlesPanier = count($panier);
@@ -70,6 +71,7 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'nombreArticlesPanier' => $nombreArticlesPanier,
+            'footers' => $footerRepo->findAll(),
         ]);
     }
 
