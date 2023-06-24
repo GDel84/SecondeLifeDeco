@@ -1,0 +1,15 @@
+{% extends 'admin/adminNav.html.twig' %}
+
+{% block title %}modifier pied de page{% endblock %}
+
+{% block body %}
+<div class="carteForm">
+    <h1>ajouter un pied de page</h1>
+ 
+
+        {{ form_start(footer) }}
+        {{ form_widget(footer) }}
+            <button type="submit" class="btn btn-secondary">Ajouter</button>
+        {{ form_end(footer) }}
+</div>
+{% endblock %}
