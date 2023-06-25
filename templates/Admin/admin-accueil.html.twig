@@ -1,11 +1,10 @@
-{% extends 'admin/adminNav.html.twig' %}
+{% extends 'admin/base-admin.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
 
-<div class="tabAccueil">
-
+<div class="container">
     <h1>Accueil Admin</h1>
     <button type="button" class="btn btn-success test">
         <a href="{{ path("admin-accueil-top-create") }}" type="button">Ajouté</a>
