@@ -1,7 +1,76 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{{ asset('css/animate.css')}}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
 
-{% block body %}	
-<p style background-color='black'>test</p>
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{{ asset('css/flexslider.css')}}">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+<style>
+ {% for accueilTop in accueilTops %}
+	.test{{accueilTop.id|raw}}{
+		background: url('{{('../uploads/picture/' ~ accueilTop.picture)|raw}}');
+		background-repeat: no-repeat;
+  		background-size: cover;
+  		background-position: center center;
+  		min-height: 700px;
+	}
+ {% endfor %}
+</style>
+
+{% endblock %}
+
+{% block body %}
+{% for accueilTop in accueilTops %}
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm test{{accueilTop.id}}" role="banner">
+{% endfor %}
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Nous Contacter</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<div id="fh5co-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-md-push-1 animate-box">
+					
+					<div class="fh5co-contact-info">
+                    {% for footer in footers %}
+						<h3>Contacte Information</h3>
+						<ul>
+							<li class=""><ion-icon name="location-outline"></ion-icon> {{footer.address}}, <br> {{footer.city}}</li>
+							<li class=""><ion-icon name="call-outline"></ion-icon> <a href="tel://1234567920">{{footer.phone}}</a></li>
+							<li class=""><ion-icon name="mail-outline"></ion-icon> <a href="{{footer.email}}">{{footer.email}}</a></li>
+						</ul>
+					</div>
+
+                    {% endfor %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
 
 {% include 'footer.html.twig' %}
 {% endblock %}
