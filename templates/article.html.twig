@@ -61,7 +61,7 @@
 					<div class="desc">
 						<h3><a href="single.html">{{article.Name}}</a></h3>
 						<div class="inner">
-						<form action="{{ path("add") }}" method="post">
+						<form action="{{ path("article-add") }}" method="post">
 							<label>Quantité</label>
 							<select name="quantity">
 								{% for i  in 1..article.Quantity %}
@@ -69,7 +69,6 @@
 								{% endfor %}
 							</select>
 							<p>
-								
 								<button type="submit" class="icon">
 									<input type="hidden" value="{{article.id}}" name="id">
         							<ion-icon name="cart-outline"></ion-icon>
