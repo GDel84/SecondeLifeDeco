@@ -6,7 +6,7 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-
+<div class="carteForm">
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
@@ -19,7 +19,7 @@
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
-
+</div>
     {% include 'footer.html.twig' %}
 
 {% endblock %}
