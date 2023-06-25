@@ -45,14 +45,16 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function contact(SessionInterface $session, FooterRepository $footerRepo): Response
+    public function contact(AccueilTopRepository $accueilTopRepo, SessionInterface $session, FooterRepository $footerRepo): Response
     {
         $panier = $session->get("panier", []);
         $nombreArticlesPanier = count($panier);
 
         return $this->render('contact.html.twig', [
+        'accueilTops' => $accueilTopRepo->findAll(),
         'nombreArticlesPanier' => $nombreArticlesPanier,
         'footers' => $footerRepo->findAll(),
         ]);
+
     }
 }
