@@ -108,9 +108,16 @@ class PanierController extends AbstractController
             'footers' => $footerRepo->findAll(),
         ]);
     }
+    #[Route('/article/add', name :'article-add', methods:["GET","POST"])]
+    public function addArticle(Request $request, PanierServices $panierServices)
+    {
+        $panierServices->addPanier($request->request->get('id'), $request->request->get('quantity'));
+
+        return $this->redirectToRoute("article");
+    }
 
     #[Route('/add', name :'add', methods:["GET","POST"])]
-    public function add(SessionInterface $session, Request $request, ManagerRegistry $doctrine, ArticleRepository $ArticleRepo, PanierServices $panierServices)
+    public function add( Request $request,  PanierServices $panierServices)
     {
         $panierServices->addPanier($request->request->get('id'), $request->request->get('quantity'));
 
