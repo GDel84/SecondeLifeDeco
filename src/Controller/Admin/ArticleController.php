@@ -267,4 +267,13 @@ class ArticleController extends AbstractController
             'articleCenter' => $form->createView()
         ]);
     }
+    #[Route('admin/article/center/delete', name:'admin-article-center-delete')]
+    public function articleCenterDelete(ArticleCenter $article, ManagerRegistry $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $em->remove($article);
+        $em->flush();
+
+        return $this->redirectToRoute("admin-article");
+    }
 }
