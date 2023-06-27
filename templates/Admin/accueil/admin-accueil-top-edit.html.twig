@@ -4,12 +4,14 @@
 
 {% block body %}
 <div class="carteForm">
-    <h1>Modifier poste accueil</h1>
+    <h1 class="titleForm">Modifier accueil</h1>
  
 
         {{ form_start(accueilTop) }}
         {{ form_widget(accueilTop) }}
-            <button type="submit" class="btn btn-secondary">Ajouter</button>
+        <div class="btnForm">
+            <button type="submit" class="btn btn-success">Modifier</button>
+        </div>
         {{ form_end(accueilTop) }}
 </div>
 {% endblock %}

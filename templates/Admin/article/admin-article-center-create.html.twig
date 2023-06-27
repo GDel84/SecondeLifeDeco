@@ -3,17 +3,11 @@
 {% block title %}Crée texte centre Articles!{% endblock %}
 
 {% block body %}
-<div class="carte w-75 p-3 text-center mx-auto my-4">
-
-    <div class="form-group">
-    <h1>Crées texte centre Articles</h1>
- 
-
+<div class="carteForm">
+    <h1 class="titleForm">Crées texte centre Articles</h1>
             {{ form_start(article) }}
             {{ form_widget(article) }}
-                <button type="submit" class="btn btn-secondary">Ajouter</button>
-
+                <button type="submit" class="btn btn-success">Ajouter</button>
             {{ form_end(article) }}
     </div>
-</div>
 {% endblock %}

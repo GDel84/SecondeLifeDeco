@@ -2,14 +2,14 @@
 
 
 {% block body %}
-<div class="carte-form">
-    <h1>Modifier article</h1>
+<div class="carteForm">
+    <h1 class="titleForm">Modifier article</h1>
  
 
-            {{ form_start(articles) }}
-            {{ form_widget(articles) }}
-                <button type="submit" class="btn btn-secondary">Ajouter</button>
-            {{ form_end(articles) }}
-    </div>
+    {{ form_start(articles) }}
+    {{ form_widget(articles) }}
+        <button type="submit" class="btn btn-success">Modifier</button>
+    {{ form_end(articles) }}
+</div>
 
 {% endblock %} 

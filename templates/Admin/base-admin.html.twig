@@ -1,20 +1,45 @@
 <html>
   <head>
-          <meta charset="UTF-8">
-          <title>{% block title %}Seconde Life Déco Admin{% endblock %}</title>
-          <link rel="icon" href={{asset('../photo/Logo.png')}}>
-          {% block stylesheets %}
-              {{ encore_entry_link_tags('app') }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <title>{% block title %}Seconde Life Déco Admin{% endblock %}</title>
+    <link rel="icon" href={{asset('../photo/Logo.png')}}>
+
+             {{ encore_entry_link_tags('app') }}
                <!-- Bootstrap  -->
   	          <link rel="stylesheet" href="{{ asset('css/bootstrap.css')}}">
+              <!-- Theme style  -->
               <link rel="stylesheet" href="{{ asset('css/adminStyle.css')}}">
+                <!-- Animate.css -->
+	            <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
+              <!-- navbar -->
+              <link rel="preconnect" href="https://fonts.googleapis.com" />
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+              <link
+                href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap"
+                rel="stylesheet"
+              />
 
-          {% endblock %}
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+	           
+
+        {% block stylesheets %}
+
+        {% endblock %}
+            {% include 'admin/adminNav.html.twig' %}
+        {% block body %}
+        
+        {% endblock %}
+        
+	        
           {% block javascripts %}
               {{ encore_entry_script_tags('app') }}
+              <!-- navbar -->
+              <script src="{{ asset('js/script.js')}}"></script>
           {% endblock %}
-          {% include 'admin/adminNav.html.twig' %}
-      </head>
+
+</head>
 <body>
-   {% block body %}{% endblock %}
+   

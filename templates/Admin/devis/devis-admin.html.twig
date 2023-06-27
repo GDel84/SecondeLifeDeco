@@ -4,8 +4,7 @@
 
 {% block body %}
 
-<div class="tabAccueil">
-
+<div class="container">
     <h1>Devis</h1>
     <div class="card-body">
         <div class="table-responsive ">
@@ -28,17 +27,16 @@
                         <td>{{devis.name}}</td>
                         <td>{{devis.lastName}}</td>
                         <td>{{devis.email}}</td>
-                        <td>{{devis.date|date("H:i")}}</td>
-                        <td>{{devis.dateFin|date("H:i")}}</td>
+                        <td>{{devis.date|date("m/d/Y")}}</td>
+                        <td>{{devis.dateFin|date("m/d/Y")}}</td>
                         <td>{{devis.livraison}}</td>
                         <td>{{devis.lieu}}</td>
                         <td>{{devis.commande|nl2br}}</td>
                         <th>
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-primary m-4">
                                 <a href="{{ path("admin-devis-edit", {id:devis.id}) }}" type="button">Modifier</a>
                             </button>
-                        </th>
-                        <th>
+
                             <button type="button" class="btn btn-danger">
                                 <a href="{{ path("admin-devis-delete", {id:devis.id}) }}" type="button">Supprimer</a>
                             </button>

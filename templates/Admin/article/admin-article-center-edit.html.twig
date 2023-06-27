@@ -3,17 +3,12 @@
 {% block title %}Modifier le texte centre Articles!{% endblock %}
 
 {% block body %}
-<div class="carte w-75 p-3 text-center mx-auto my-4">
+<div class="carteForm">
+    <h1 class="titleForm">Modifier texte centre Articles</h1>
 
-    <div class="form-group">
-    <h1>Modifier texte centre Articles</h1>
- 
-
-            {{ form_start(articleCenter) }}
-            {{ form_widget(articleCenter) }}
-                <button type="submit" class="btn btn-secondary">Modifier</button>
-
-            {{ form_end(articleCenter) }}
-    </div>
+    {{ form_start(articleCenter) }}
+    {{ form_widget(articleCenter) }}
+        <button type="submit" class="btn btn-success">Modifier</button
+    {{ form_end(articleCenter) }}
 </div>
 {% endblock %}
