@@ -16,20 +16,37 @@ class DevisAdminFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('email', EmailType::class)
+            ->add('name', TextType::class, [
+                'attr' => ['class' => 'inputclass'],
+                'label' => 'Nom :',
+            ])
+            ->add('lastName', TextType::class, [
+                'attr' => ['class' => 'inputclass'],
+                'label' => 'Prenom :',
+            ])
+            ->add('email', EmailType::class, [
+                'attr' => ['class' => 'inputclass'],
+                'label' => 'Email :',
+            ])
             ->add('date', DateType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'widget' => 'choice',
                 'input'  => 'datetime_immutable'
             ])
             ->add('dateFin', DateType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'widget' => 'choice',
                 'input'  => 'datetime_immutable'
             ])
             ->add('livraison')
-            ->add('lieu', TextType::class)
-            ->add('commande', TextareaType::class)
+            ->add('lieu', TextType::class, [
+                'attr' => ['class' => 'inputclass'],
+                'label' => 'Lieu :',
+            ])
+            ->add('commande', TextareaType::class, [
+                'attr' => ['class' => 'inputclass'],
+                'label' => 'Commande :',
+            ])
         ;
     }
 

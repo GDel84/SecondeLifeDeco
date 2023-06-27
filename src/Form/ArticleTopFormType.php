@@ -17,12 +17,15 @@ class ArticleTopFormType extends AbstractType
     {
         $builder
             ->add('title', TextType::class,[
+                'attr' => ['class' => 'inputclass'],
                 'label' => 'Titre'
                 ])
             ->add('text', TextareaType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'label' => 'Texte'
                 ])
             ->add('picture', FileType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'label' => 'Photo',
 
                 // unmapped means that this field is not associated to any entity property

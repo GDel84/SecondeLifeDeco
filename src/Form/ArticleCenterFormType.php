@@ -15,9 +15,11 @@ class ArticleCenterFormType extends AbstractType
     {
         $builder
         ->add('Title', TypeTextType::class,[
+            'attr' => ['class' => 'inputclass'],
             'label' => 'Titre'
             ])
             ->add('Text', TextareaType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'label' => 'Texte'
             ])
         ;

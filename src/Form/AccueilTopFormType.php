@@ -17,6 +17,7 @@ class AccueilTopFormType extends AbstractType
     {
         $builder
             ->add('picture', FileType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'label' => 'Photo',
 
                 // unmapped means that this field is not associated to any entity property
@@ -41,9 +42,11 @@ class AccueilTopFormType extends AbstractType
                 ],
             ])
             ->add('Title', TextType::class,[
+                'attr' => ['class' => 'inputclass'],
             'label' => 'Titre'
             ])
             ->add('Text', TextareaType::class, [
+                'attr' => ['class' => 'inputclass'],
                 'label' => 'Texte'
             ])
         ;
