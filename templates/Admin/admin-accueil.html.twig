@@ -4,44 +4,35 @@
 
 {% block body %}
 
-<div class="container">
-    <h1>Accueil Admin</h1>
-    <button type="button" class="btn btn-success test">
-        <a href="{{ path("admin-accueil-top-create") }}" type="button">Ajouté</a>
-    </button>
-    <div class="card-body">
-        <div class="table-responsive ">
-            <table class="table table-striped-columns">        
-                <thead> 
-                    <tr>
-                        <th>Photo</th>
-                        <th>Titre</th>
-                        <th>Texte</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
-                    </tr> 
-                </thead>
-                <tbody>
-                {% for accueilTop in accueilTops %}
-                    <tr>
-                        <td>{{accueilTop.Title}}</td>
-                        <td>{{accueilTop.Text}}</td>
-                        <td><img src={{asset('/uploads/picture/' ~ accueilTop.picture)}} width="200px"></td>
-                        <th>
-                            <button type="button" class="btn btn-primary">
-                                <a href="{{ path("admin-accueil-top-edit", {id:accueilTop.id}) }}" type="button">Modifier</a>
-                            </button>
-                        </th>
-                        <th>
-                            <button type="button" class="btn btn-danger">
-                                <a href="{{ path("admin-accueil-top-delete", {id:accueilTop.id}) }}" type="button">Supprimer</a>
-                            </button>
-                        </th>
-                    </tr>
-                {% endfor %}
-                </tbody> 
-            </table>
+    <h1 class="titre-section-info">Accueil</h1>
+<div class="test">
+<section class="section-info" id="infos">
+
+        {% for accueilTop in accueilTops %}
+    <div class="carte-info">
+
+        <h2>{{accueilTop.Title}}</h2>
+        <div class="container-photo-info">
+            <img src={{asset('/uploads/picture/' ~ accueilTop.picture)}} alt="photo carouselle">
         </div>
-    </div>
+        <p>
+            {{accueilTop.Text}}
+        </p>
+        <div class="btn3">
+            <button type="button" class="btn-success">
+                <a href="{{ path("admin-accueil-top-create") }}" type="button">Ajouté</a>
+            </button>
+            <button type="button" class="">
+                <a href="{{ path("admin-accueil-top-edit", {id:accueilTop.id}) }}" type="button">Modifier</a>
+            </button>
+            <button type="button" class="">
+                <a href="{{ path("admin-accueil-top-delete", {id:accueilTop.id}) }}" type="button">Supprimer</a>
+            </button>
+        </div>
+
+    </div>  
+            {% endfor %}    
+</section>
 </div>
+
 {% endblock %}
