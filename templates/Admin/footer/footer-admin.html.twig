@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <h1>Contacte et pied de page</h1>
+    <h1 class="titre-section-info">Contacte et pied de page</h1>
     <div class="card-body">
         <div class="table-responsive ">
             <table class="table table-striped-columns">        
@@ -26,9 +26,7 @@
                         <td>{{footer.email}}</td>
                         <td>{{footer.phone}}</td>
                         <th>
-                            <button type="button" class="btn btn-success">
-                                <a href="{{ path("admin-footer-edit", {id:footer.id}) }}" type="button">Modifier</a>
-                            </button>
+                                <a href="{{ path("admin-footer-edit", {id:footer.id}) }}" type="button" class="btn btn-success">Modifier</a>
                         </th>
                     </tr>
                 {% endfor %}

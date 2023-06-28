@@ -17,9 +17,10 @@
                             <td>{{user.name}}</td>
                             <td>{{user.email}}</td>
                             <td>{{user.roles [0]|default('')|replace({'ROLE_ADMIN': 'Admin', 'ROLE_USER': 'Client'})}}</td>
-                            <td><a href="{{ path("admin-user-edit", {id:user.id}) }}" type="button" class="btn btn-outline-primary">
-                                    <i class="fa fa-pencil"></i>
-                                </a></td>
+                            <td><a href="{{ path("admin-user-edit", {id:user.id}) }}" type="button" class="btn btn-success">
+                                    Modifier
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

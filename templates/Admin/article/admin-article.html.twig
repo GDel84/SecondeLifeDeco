@@ -2,40 +2,54 @@
 
 {% block title %}Les Articles!{% endblock %}
 {% block body %}
-<div class="tabAccueil">
-    <div class="container">
-      <div class="row featurette">
-        <div class="col-md-7">
-        {% for articleCenter in articleCenters %}
-          <h2 class="featurette-heading text-center">{{articleCenter.title}} <span class="text-muted"></span></h2>
-          <p class="lead">{{articleCenter.text}} </p>
-        </div>
-        <div class="col-md-4">
-                <a href="{{ path("admin-article-center-edit", {id:articleCenter.id}) }}" type="button" class="btn btn-primary">Modifier</a>
+<div class="titre-section-info">
+    <h1 class="">En-tête Article</h1>
+    <a href="{{ path("admin-article-top-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
+<section class="section-info" id="infos">
+
+        {% for articleTop in articleTops %}
+        <div class="carte-info">
+            <h2 class="titre-section-info ">{{articleTop.title}} </h2>
+            <div class="container-photo-info">
+                <img src={{asset('/uploads/picture/' ~ articleTop.picture)}} alt="photo carouselle">
+            </div>
+            <p>
+                {{articleTop.text}} 
+            </p>
+            <div class="btn3">
+                <a href="{{ path("admin-article-top-edit", {id:articleTop.id}) }}" type="button" class="btn btn-primary">Modifier</a>
+                <a href="{{ path("admin-article-top-delete") }}" type="button" class="btn btn-danger">Supprimer</a>
+            </div>
         {% endfor %}
-        </div>
-      </div>
-    </div>
+</section>
     <hr class="featurette-divider">
 
-    <div class="container">
-      <div class="row featurette">
-        <div class="col-md-7">
-        {% for articleCenter in articleCenters %}
-          <h2 class="featurette-heading text-center">{{articleCenter.title}} <span class="text-muted"></span></h2>
+<div class="titre-section-info">
+    <h1 class="">Texte centre de l'article</h1>
+    <a href="{{ path("admin-article-center-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
+
+<section class="section-info" id="infos">
+    {% for articleCenter in articleCenters %}
+        <div class="carte-info">
+          <h2 class="titre-section-info ">{{articleCenter.title}} <span class="text-muted"></span></h2>
           <p class="lead">{{articleCenter.text}} </p>
-        </div>
-        <div class="col-md-4">
+
+            <div class="btn3">
                 <a href="{{ path("admin-article-center-edit", {id:articleCenter.id}) }}" type="button" class="btn btn-primary">Modifier</a>
-        {% endfor %}
+                <a href="{{ path("admin-article-center-delete") }}" type="button" class="btn btn-danger">Supprimer</a>
+            </div>
         </div>
-      </div>
-    </div>
+    {% endfor %}
+</section>
     <hr class="featurette-divider">
+<div class="titre-section-info">
+    <h1 class="">Les Article</h1>
+    <a href="{{ path("admin-article-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
 
     <div class="container">
-        <h1 class="h3 mb-2">Horaire d'ouverture</h1>
-            <a href="{{ path("admin-article-create") }}" type="button" class="btn btn-success">Ajouté</a>
         <div class="shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
