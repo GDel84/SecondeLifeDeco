@@ -223,14 +223,12 @@ nav {
   justify-content: center;
   width: 100%;
   margin: auto;
-  float: left;
 }
 .carte-info {
   width: 450px;
   height: auto;
   margin: 0 20px 80px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  float: left;
 }
 .container-photo-info img {
   width: 100%;
@@ -253,6 +251,10 @@ nav {
 .btn3{
   display: flex;
   flex-direction: column;
+}
+.btnAdd{
+  margin: auto;
+  align-items: center;
 }
 
 @media screen and (max-width: 1400px) {
@@ -303,4 +305,23 @@ nav {
   margin: 25px;
   align-items: center;
   color: green;
+}
+
+/*--------- carte Devis ----------*/
+
+.sectionDevis{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+}
+.carteDevis{
+  width: 450px;
+  height: auto;
+  margin: 0 20px 80px;
+  box-shadow: 0 10px 30px rgba(77, 126, 61, 0.4);
+}
+.devisName{
+  text-align: center;
 }
