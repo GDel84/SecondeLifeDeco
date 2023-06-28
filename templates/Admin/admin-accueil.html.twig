@@ -3,14 +3,13 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-
+<div class="titre-section-info">
     <h1 class="titre-section-info">Accueil</h1>
-<div class="test">
+    <a href="{{ path("admin-accueil-top-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
 <section class="section-info" id="infos">
-
-        {% for accueilTop in accueilTops %}
+    {% for accueilTop in accueilTops %}
     <div class="carte-info">
-
         <h2>{{accueilTop.Title}}</h2>
         <div class="container-photo-info">
             <img src={{asset('/uploads/picture/' ~ accueilTop.picture)}} alt="photo carouselle">
@@ -19,20 +18,11 @@
             {{accueilTop.Text}}
         </p>
         <div class="btn3">
-            <button type="button" class="btn-success">
-                <a href="{{ path("admin-accueil-top-create") }}" type="button">Ajouté</a>
-            </button>
-            <button type="button" class="">
-                <a href="{{ path("admin-accueil-top-edit", {id:accueilTop.id}) }}" type="button">Modifier</a>
-            </button>
-            <button type="button" class="">
-                <a href="{{ path("admin-accueil-top-delete", {id:accueilTop.id}) }}" type="button">Supprimer</a>
-            </button>
+            <a href="{{ path("admin-accueil-top-edit", {id:accueilTop.id}) }}" type="button" class="btn btn-primary">Modifier</a>
+            <a href="{{ path("admin-accueil-top-delete", {id:accueilTop.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
         </div>
-
     </div>  
-            {% endfor %}    
+        {% endfor %}    
 </section>
-</div>
 
 {% endblock %}
