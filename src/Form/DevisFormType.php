@@ -7,7 +7,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,7 +41,7 @@ class DevisFormType extends AbstractType
                 'format' => 'dd-MM-yyyy', // Format inversé : jour-mois-année
             ])
             ->add('livraison', ChoiceType::class, [
-                'attr' => ['class' => 'inputclass radio'],
+                'attr' => ['class' => 'inputclassS'],
                 'label' => 'Avec livraison ?',
                 'choices' => [
                     'Oui' => true,

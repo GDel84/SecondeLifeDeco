@@ -31,12 +31,14 @@ class DevisAdminFormType extends AbstractType
             ->add('date', DateType::class, [
                 'attr' => ['class' => 'inputclass'],
                 'widget' => 'choice',
-                'input'  => 'datetime_immutable'
+                'data' => new \DateTime(),
+                'format' => 'dd-MM-yyyy',
             ])
             ->add('dateFin', DateType::class, [
                 'attr' => ['class' => 'inputclass'],
                 'widget' => 'choice',
-                'input'  => 'datetime_immutable'
+                'data' => new \DateTime(),
+                'format' => 'dd-MM-yyyy',
             ])
             ->add('livraison')
             ->add('lieu', TextType::class, [
