@@ -24,13 +24,18 @@
   		min-height: 700px;
 	}
  {% endfor %}
+ {% for articleTop in articleTops %}
+	.fh5co-cover-sm{{articleTop.id|raw}}{
+		background: url('{{('../uploads/picture/' ~ articleTop.picture)|raw}}');
+	}
+{% endfor %}
 </style>
 
 {% endblock %}
 
 {% block body %}
-{% for accueilTop in accueilTops %}
-<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm test{{accueilTop.id}}" role="banner">
+{% for articleTop in articleTops %}
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm test{{articleTop.id}}" role="banner">
 {% endfor %}
 		<div class="overlay"></div>
 		<div class="container">

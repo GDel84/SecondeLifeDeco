@@ -16,7 +16,7 @@
 	}
 {% endfor %}
 {% for articleTop in articleTops %}
-	.fh5co-cover{{articleTop.id|raw}}{
+	.fh5co-cover-sm{{articleTop.id|raw}}{
 		background: url('{{('../uploads/picture/' ~ articleTop.picture)|raw}}');
 	}
 {% endfor %}
@@ -24,7 +24,7 @@
 {% endblock %}
 {% block body %}
 {% for articleTop in articleTops %}
-<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm {{articleTop.id}}" role="banner" style="background-image:url(photo/deuxChaise.jpg);">
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm{{articleTop.id}}">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
