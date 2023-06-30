@@ -19,7 +19,7 @@ class AccueilController extends AbstractController
     #[Route('/admin/accueil', name: 'admin-accueil')]
     public function index(AccueilTopRepository $accueilTopRepo): Response
     {
-        return $this->render('admin/admin-accueil.html.twig', [
+        return $this->render('admin/accueil/admin-accueil.html.twig', [
             'accueilTops' => $accueilTopRepo->findAll(),
         ]);
     }
