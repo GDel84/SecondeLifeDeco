@@ -8,7 +8,8 @@ use App\Repository\ArticleCenterRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\ArticleTopRepository;
 use App\Repository\FooterRepository;
-use App\Repository\PanierRepository;
+use App\Repository\ServiceRepository;
+use App\Repository\ServiceTopRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -45,13 +46,28 @@ class DefaultController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function contact(AccueilTopRepository $accueilTopRepo, SessionInterface $session, FooterRepository $footerRepo): Response
+    public function contact(ArticleTopRepository $articleTopRepo, AccueilTopRepository $accueilTopRepo, SessionInterface $session, FooterRepository $footerRepo): Response
     {
         $panier = $session->get("panier", []);
         $nombreArticlesPanier = count($panier);
 
         return $this->render('contact.html.twig', [
         'accueilTops' => $accueilTopRepo->findAll(),
+        'articleTops' => $articleTopRepo->findAll(),
+        'nombreArticlesPanier' => $nombreArticlesPanier,
+        'footers' => $footerRepo->findAll(),
+        ]);
+
+    }
+    #[Route('/service', name: 'service')]
+    public function service(ServiceRepository $serviceRepo, ServiceTopRepository $serviceTopRepo, SessionInterface $session, FooterRepository $footerRepo): Response
+    {
+        $panier = $session->get("panier", []);
+        $nombreArticlesPanier = count($panier);
+
+        return $this->render('service.html.twig', [
+        'serviceTops' => $serviceTopRepo->findAll(),
+        'services' => $serviceRepo->findAll(),
         'nombreArticlesPanier' => $nombreArticlesPanier,
         'footers' => $footerRepo->findAll(),
         ]);
