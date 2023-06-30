@@ -775,13 +775,12 @@ h1, h2, h3, h4, h5, h6, figure {
   background: #d1c286;
   border: none;
   margin: auto;
-  border-radius: 2%;
 }
 .inner p .icon:hover {
   transition-duration:0.5s;
   background-color: #d8b423;
   box-shadow: 3px 3px 3px #7A7A7A;
-  border-radius: 10%;
+  border-radius: 8%;
 }
 .product .desc h3 {
   font-size: 14px;
@@ -1627,7 +1626,10 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: auto;
   text-align: center;
 }
-
+/*-------service---------*/
+.service{
+  margin-top: 5%;
+}
 /*-------panier-----------*/
 
 .panier{
