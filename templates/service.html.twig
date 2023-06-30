@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+	<style>
+
+{% for serviceTop in serviceTops %}
+	.fh5co-cover-sm{{serviceTop.id|raw}}{
+		background: url('{{('../uploads/picture/' ~ serviceTop.picture)|raw}}');
+	}
+{% endfor %}
+	</style>
+{% endblock %}
+{% block body %}
+{% for serviceTop in serviceTops %}
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm{{serviceTop.id}}">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 text-center">
+				<div class="display-t">
+				
+					<div class="display-tc animate-box" data-animate-effect="fadeIn">
+						<h1>{{serviceTop.title}}</h1>
+						<h2>{{serviceTop.text}} </h2>
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<div id="fh5co-product">
+    <div class="container">
+        <div class="row featurette">
+        {% for service in services %}
+          <div class="col-md-7">
+            <h2 class="featurette-heading">{{service.title}} <span class="text-muted"></span></h2>
+            <p class="lead">{{service.text}}</p>
+          </div>
+
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{{asset('/uploads/picture/' ~ service.picture)}}" data-holder-rendered="true" style="width: 500px; height: 500px;">
+          </div>
+        {% endfor %}
+        </div>
+
+        <hr class="featurette-divider">
+    </div>
+</div>
+	{% include 'footer.html.twig' %}
+{% endblock %}
