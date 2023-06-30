@@ -1,0 +1,51 @@
+{% extends 'admin/base-admin.html.twig' %}
+
+{% block title %}Hello ServicesAdminController!{% endblock %}
+
+{% block body %}
+<div class="titre-section-info">
+    <h1 class="">Services</h1>
+    <a href="{{ path("admin-service-top-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
+<section class="section-info" id="infos">
+
+        {% for serviceTop in serviceTops %}
+        <div class="carte-info">
+            <h2 class="titre-section-info ">{{serviceTop.title}} </h2>
+            <div class="container-photo-info">
+                <img src={{asset('/uploads/picture/' ~ serviceTop.picture)}} alt="photo carouselle">
+            </div>
+            <p>
+                {{serviceTop.text}} 
+            </p>
+            <div class="btn3">
+                <a href="{{ path("admin-service-top-edit", {id:serviceTop.id}) }}" type="button" class="btn btn-primary">Modifier</a>
+                <a href="{{ path("admin-service-top-delete") }}" type="button" class="btn btn-danger">Supprimer</a>
+            </div>
+        {% endfor %}
+</section>
+    <hr class="featurette-divider">
+
+<div class="titre-section-info">
+    <h1 class="">Texte centre de l'article</h1>
+    <a href="{{ path("admin-service-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
+
+<section class="section-info" id="infos">
+    {% for service in services %}
+        <div class="carte-info">
+            <h2 class="titre-section-info ">{{service.title}} <span class="text-muted"></span></h2>
+            <div class="container-photo-info">
+                <img src={{asset('/uploads/picture/' ~ service.picture)}} alt="photo carouselle">
+            </div>
+          <p class="lead">{{service.text}} </p>
+
+            <div class="btn3">
+                <a href="{{ path("admin-service-edit", {id:service.id}) }}" type="button" class="btn btn-primary">Modifier</a>
+                <a href="{{ path("admin-service-delete") }}" type="button" class="btn btn-danger">Supprimer</a>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
+{% endblock %}

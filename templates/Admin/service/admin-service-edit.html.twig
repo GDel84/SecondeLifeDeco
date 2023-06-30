@@ -1,0 +1,17 @@
+{% extends 'admin/base-admin.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+<div class="carteForm">
+    <h1 class="titleForm">Modifier</h1>
+ 
+
+        {{ form_start(serviceTop) }}
+        {{ form_widget(serviceTop) }}
+        <div class="btnForm">
+            <button type="submit" class="btn btn-success">Modifier</button>
+        </div>
+        {{ form_end(serviceTop) }}
+</div>
+{% endblock %}
