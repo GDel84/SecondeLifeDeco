@@ -412,7 +412,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-cover {
   height: 800px;
   background-size: cover;
-  background-position: top center;
+  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   float: left;
@@ -1626,10 +1626,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: auto;
   text-align: center;
 }
-/*-------service---------*/
-.service{
-  margin-top: 5%;
-}
+
 /*-------panier-----------*/
 
 .panier{
@@ -1670,4 +1667,10 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: auto;
   margin-top: 25px;
   align-items: center;
+}
+/*---------mention-----------*/
+.mention{
+  max-width: 70%;
+  margin: auto;
+  margin-top: 5%;
 }
