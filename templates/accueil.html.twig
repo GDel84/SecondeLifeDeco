@@ -62,10 +62,9 @@
 
 <div id="fh5co-product">
     <div class="container">
+	    {% for accueilCenter in accueilCenters %}
         <div class="row featurette">
-    {% for accueilCenter in accueilCenters %}
-        {% if loop.index is even %}
- 
+        	{% if loop.index is even %}
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading">{{ accueilCenter.title }} <span class="text-muted"></span></h2>
                 <p class="lead">{{ accueilCenter.text }}</p>
@@ -73,7 +72,7 @@
 			<div class="col-md-5">
                 <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{{ asset('/uploads/picture/' ~ accueilCenter.picture) }}" data-holder-rendered="true" style="width: 400px; height: 400px;">
             </div>
-        {% else %}
+        	{% else %}
 		    <div class="col-md-5">
                 <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{{ asset('/uploads/picture/' ~ accueilCenter.picture) }}" data-holder-rendered="true" style="width: 400px; height: 400px;">
             </div>
@@ -81,13 +80,11 @@
                 <h2 class="featurette-heading">{{ accueilCenter.title }} <span class="text-muted"></span></h2>
                 <p class="lead">{{ accueilCenter.text }}</p>
             </div>
-
-        {% endif %}
- 
+        	{% endif %}
 		</div>
+		        <hr class="featurette-divider">
 
-        <hr class="featurette-divider">
-	 {% endfor %}
+		{% endfor %}
     </div>
 </div>
 
@@ -264,9 +261,7 @@
 </div>
 </div>
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
+
 
 	
 	{% include 'footer.html.twig' %}
