@@ -1,0 +1,14 @@
+{% extends 'admin/base-admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="carteForm">
+    <h1 class="titleForm">Modifier un poste accueil corp de page</h1>
+ 
+        {{ form_start(accueil) }}
+        {{ form_widget(accueil) }}
+            <button type="submit" class="btn btn-success">Modifier</button>
+        {{ form_end(accueil) }}
+</div>
+{% endblock %}

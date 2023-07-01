@@ -25,4 +25,26 @@
         {% endfor %}    
 </section>
 
+<div class="titre-section-info">
+    <h1 class="titre-section-info">Centre de l'accueil</h1>
+    <a href="{{ path("admin-accueil-center-create") }}" type="button" class="btn btn-success">Ajouté</a>
+</div>
+<section class="section-info" id="infos">
+    {% for accueil in accueils %}
+    <div class="carte-info">
+        <h2>{{accueil.Title}}</h2>
+        <div class="container-photo-info">
+            <img src={{asset('/uploads/picture/' ~ accueil.picture)}} alt="photo carouselle">
+        </div>
+        <p>
+            {{accueil.Text}}
+        </p>
+        <div class="btn3">
+            <a href="{{ path("admin-accueil-center-edit", {id:accueil.id}) }}" type="button" class="btn btn-primary">Modifier</a>
+            <a href="{{ path("admin-accueil-center-delete", {id:accueil.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
+        </div>
+    </div>  
+        {% endfor %}    
+</section>
+
 {% endblock %}

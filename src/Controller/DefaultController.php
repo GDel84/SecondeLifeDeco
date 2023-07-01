@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Panier;
+use App\Repository\AccueilCenterRepository;
 use App\Repository\AccueilTopRepository;
 use App\Repository\ArticleCenterRepository;
 use App\Repository\ArticleRepository;
@@ -18,13 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     #[Route('/', name: 'accueil')]
-    public function index(AccueilTopRepository $accueilTopRepo, SessionInterface $session, FooterRepository $footerRepo): Response
+    public function index(AccueilTopRepository $accueilTopRepo, SessionInterface $session, FooterRepository $footerRepo, AccueilCenterRepository $accueilCenterRepo): Response
     {
         $panier = $session->get("panier", []);
         $nombreArticlesPanier = count($panier);
 
         return $this->render('accueil.html.twig', [
             'accueilTops' => $accueilTopRepo->findAll(),
+            'accueilCenters' => $accueilCenterRepo->findAll(),
             'nombreArticlesPanier' => $nombreArticlesPanier,
             'footers' => $footerRepo->findAll(),
         ]);
@@ -68,6 +70,20 @@ class DefaultController extends AbstractController
         return $this->render('service.html.twig', [
         'serviceTops' => $serviceTopRepo->findAll(),
         'services' => $serviceRepo->findAll(),
+        'nombreArticlesPanier' => $nombreArticlesPanier,
+        'footers' => $footerRepo->findAll(),
+        ]);
+
+    }
+    #[Route('/mention', name: 'mention')]
+    public function mentionLegale(ArticleTopRepository $articleTopRepo, AccueilTopRepository $accueilTopRepo, SessionInterface $session, FooterRepository $footerRepo): Response
+    {
+        $panier = $session->get("panier", []);
+        $nombreArticlesPanier = count($panier);
+
+        return $this->render('mentionLegale.html.twig', [
+        'accueilTops' => $accueilTopRepo->findAll(),
+        'articleTops' => $articleTopRepo->findAll(),
         'nombreArticlesPanier' => $nombreArticlesPanier,
         'footers' => $footerRepo->findAll(),
         ]);
