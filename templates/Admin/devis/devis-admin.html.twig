@@ -3,36 +3,6 @@
 {% block title %}Les devis{% endblock %}
 
 {% block body %}
-
-<!--<div class="container">
-    <h1>Devis</h1>
-    <div class="card-body">
-        <div class="table-responsive ">
-            <table class="table table-striped-columns">        
-                <thead> 
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>email</th>
-                        <th>date</th>
-                        <th>date de retour</th>
-                        <th>livraison</th>
-                        <th>Lieu</th>
-                        <th>Commande</th>
-                    </tr> 
-                </thead>
-                <tbody>
-                    <tr>
-                   
-                        <th>
-
-                        </th>
-                    </tr>
-                </tbody> 
-            </table>
-        </div>
-    </div>
-</div>-->
 <div class="titre-section-info">
     <h1 class="">Les Devis</h1>
     <a href="{{ path("admin-devis-create") }}" type="button" class="btn btn-success">Ajouter</a>
@@ -41,12 +11,13 @@
 <section class="sectionDevis">
     {% for devis in deviss %}
     <div class="carteDevis">
-        <p class="devisName">Nom, Prénom :{{devis.name}} {{devis.lastName}}</p>
-        <p>eamil :{{devis.email}}</p>
-        <p>Date :{{devis.date|date("m/d/Y")}} au {{devis.dateFin|date("m/d/Y")}}</p>
-        <p>Livraison :{{devis.livraison}}</p>
-        <p>Lieux :{{devis.lieu}}</p>
-        <p>Commande :{{devis.commande|nl2br}}</p>
+        <p class="devisName"><span class="devisp">Nom, Prénom :</span>{{devis.name}} {{devis.lastName}}</p>
+        <p><span class="devisp">eamil :</span>{{devis.email}}</p>
+        <p><span class="devisp">Date :</span>{{devis.date|date("m/d/Y")}} au {{devis.dateFin|date("m/d/Y")}}</p>
+        <p><span class="devisp">Livraison :</span>{{devis.livraison}}</p>
+        <p><span class="devisp">Lieux :</span>{{devis.lieu}}</p>
+        <p><span class="devisp">Commande :</span><br>
+        {{devis.commande|nl2br}}</p>
         <div class="btn3">
             <a href="{{ path("admin-devis-edit", {id:devis.id}) }}" type="button" class="btn btn-primary">Modifier</a>
             <a href="{{ path("admin-devis-delete", {id:devis.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
