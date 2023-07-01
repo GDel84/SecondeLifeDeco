@@ -1,3 +1,11 @@
-test
-{{ devis.Name }} 
+Bonjour,
+
+Trouvez-ci dessous la demande de devis pour {{ devis.Name }}, 
+
+Nom, Prénom :{{ devis.Name }} {{devis.lastName}}
+{{devis.lastName}}
+<p><span class="devisp">Date :</span>{{devis.date|date("m/d/Y")}} au {{devis.dateFin|date("m/d/Y")}}</p>
+<p><span class="devisp">Livraison :</span>{{devis.livraison}}</p>
+<p><span class="devisp">Lieux :</span>{{devis.lieu}}</p>
+<p><span class="devisp">Commande :</span><br>
 {{ devis.commande|nl2br}}
